@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Torra Zalazar Portfolio</title>
+<meta name="description" content="Guillermo Torra Zalazar, diseñador gráfico de Rosario, Argentina. Diseño deportivo, matchdays, redes sociales y miniaturas para YouTube.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Outfit:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* ================= PALETA: rojo y negro ================= */
+:root{
+  color-scheme:dark;
+  --bg:#0B0707; --bg2:#150C0C; --deep:#050303; --fg:#F4EEEC; --mute:#A8958F; --line:rgba(244,238,236,.15);
+  --ac:#E3151C; --on-ac:#FFFFFF; --ac2:#6E0408; --on-ac2:#FFFFFF;
+}
+:root{
+  --display:"Big Shoulders Display","Arial Narrow","Roboto Condensed",Impact,sans-serif;
+  --body:"Outfit","Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono",ui-monospace,Consolas,monospace;
+  --gutter:clamp(16px,4vw,56px);
+  --max:1400px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --r:26px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased;transition:background .4s,color .4s}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+::selection{background:var(--ac);color:var(--on-ac)}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.logo{font-family:"Outfit",sans-serif;font-weight:400;letter-spacing:-.02em;white-space:nowrap;line-height:1}
+.logo b{font-weight:700}
+html.intro-on body{overflow:hidden}
+
+/* char split helpers */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-block:.16em .06em;margin-block:-.16em -.06em}
+.c{display:inline-block;will-change:transform}
+
+/* ================= INTRO ================= */
+.intro{display:none}
+html.intro-on .intro{display:block;position:fixed;inset:0;z-index:300}
+.intro-bg{position:absolute;inset:0}
+.intro-bg.b{background:var(--ac2)}
+.intro-bg.a{background:var(--ac)}
+.intro-ui{position:absolute;inset:0;color:var(--on-ac);display:grid;grid-template-rows:auto 1fr auto;padding:calc(18px + env(safe-area-inset-top,0px)) var(--gutter) calc(18px + env(safe-area-inset-bottom,0px))}
+.intro-top{display:flex;justify-content:space-between;gap:12px}
+.intro-top > *{overflow:hidden}
+.intro-flip{place-self:center;width:clamp(130px,17vw,230px);aspect-ratio:9/16;overflow:hidden;background:rgba(0,0,0,.2);box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.intro-flip img{width:100%;height:100%;object-fit:cover}
+.intro-bot{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.intro-logo{font-size:clamp(2.2rem,7vw,6rem)}
+.intro-count{font-family:var(--display);font-weight:900;font-size:clamp(4rem,14vw,12rem);line-height:.8;font-variant-numeric:tabular-nums}
+.intro-skip{position:absolute;right:var(--gutter);top:50%;translate:0 -50%;background:none;border:1px solid currentColor;border-radius:99px;padding:8px 14px;cursor:pointer;color:var(--on-ac)}
+@media (max-width:640px){.intro-skip{top:auto;bottom:calc(120px + env(safe-area-inset-bottom,0px))}}
+
+/* ================= HEADER ================= */
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--ac);transform-origin:left;transform:scaleX(0);z-index:120}
+.hdr{position:fixed;left:0;right:0;top:0;z-index:110;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;
+  padding:calc(16px + env(safe-area-inset-top,0px)) var(--gutter) 22px;color:var(--fg);background:linear-gradient(to bottom, rgba(5,3,3,.85), rgba(5,3,3,0));transition:transform .6s var(--ease)}
+.hdr .logo b{color:var(--ac)}
+.clock::before{background:var(--ac)!important}
+.hdr.hide{transform:translateY(-110%)}
+.hdr .logo{font-size:22px;text-decoration:none;justify-self:start}
+.clock{display:flex;align-items:center;gap:8px}
+.clock::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.1s steps(2) infinite}
+.clock b{font-weight:500;font-variant-numeric:tabular-nums}
+@keyframes blink{50%{opacity:.2}}
+.menu-btn{justify-self:end;display:flex;align-items:center;gap:10px;background:none;border:0;cursor:pointer;color:var(--fg);padding:6px 0}
+.menu-btn .bars{width:26px;height:10px;position:relative}
+.menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;transition:transform .5s var(--ease)}
+.menu-btn .bars::before{top:0}
+.menu-btn .bars::after{bottom:0}
+.menu-btn:hover .bars::before{transform:scaleX(.6);transform-origin:right}
+@media (max-width:560px){.clock span{display:none}}
+
+/* ================= MENU OVERLAY ================= */
+.menu{position:fixed;inset:0;z-index:130;background:var(--ac);color:var(--on-ac);display:grid;grid-template-rows:auto 1fr auto;
+  padding:calc(16px + env(safe-area-inset-top,0px)) var(--gutter) calc(20px + env(safe-area-inset-bottom,0px));
+  clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .9s var(--ease), visibility 0s .9s}
+.menu.open{clip-path:inset(0 0 0 0);visibility:visible;transition:clip-path .9s var(--ease)}
+.menu-top{display:flex;justify-content:space-between;align-items:center}
+.menu-top .logo{font-size:22px}
+.menu-close{background:none;border:1px solid currentColor;border-radius:99px;padding:8px 16px;cursor:pointer;color:inherit}
+.menu nav{align-self:center;display:grid;gap:.1em}
+.menu nav a{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(3rem,10vw,8rem);line-height:.9;text-decoration:none;display:flex;align-items:baseline;gap:.25em;width:max-content;max-width:100%}
+.menu nav a .w{padding-bottom:0}
+.menu nav a small{font-family:var(--mono);font-size:12px;letter-spacing:.06em;opacity:.7}
+.menu nav a:hover .c{transform:translateY(-6%)}
+.menu nav a .c{transition:transform .4s var(--ease)}
+.menu-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;align-items:end}
+.menu-foot a{text-decoration:none}
+
+/* ================= CURSOR ================= */
+.cursor{position:fixed;left:0;top:0;z-index:400;pointer-events:none;width:12px;height:12px;border-radius:50%;background:var(--ac);box-shadow:0 0 0 1.5px var(--fg);
+  translate:-50% -50%;display:grid;place-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:transparent;opacity:0;
+  transition:width .45s var(--ease),height .45s var(--ease),opacity .3s}
+.cursor.on{opacity:1}
+.cursor.big{width:86px;height:86px;color:#fff;box-shadow:none}
+.cursor.link{width:44px;height:44px}
+
+/* ================= HERO ================= */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-rows:1fr auto;overflow:hidden;
+  padding:calc(90px + env(safe-area-inset-top,0px)) 0 clamp(20px,3vw,36px)}
+.pitch{position:absolute;inset:0;width:100%;height:100%;color:var(--line);pointer-events:none}
+.pitch *{fill:none;stroke:currentColor;stroke-width:1.5;vector-effect:non-scaling-stroke}
+.hero-main{position:relative;z-index:2;align-self:center;width:100%}
+.hero-meta{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--mute);margin:0 0 clamp(30px,4.2vw,64px)}
+.hero-meta b{color:var(--ac);font-weight:500}
+.hero-h{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:-.005em;margin:0;font-size:clamp(3.6rem,18vw,16rem)}
+.hero-h .row{display:block}
+.hero-h .row.ac{color:var(--ac)}
+.slot{display:grid!important}
+.slot > span{grid-area:1/1;white-space:nowrap}
+.slot > span:not(:first-child){visibility:hidden}
+.slot.live > span{visibility:visible}
+.hero-foot{position:relative;z-index:4;width:100%;display:grid;grid-template-columns:1fr auto;gap:18px 32px;align-items:end;margin-top:clamp(20px,4vw,40px)}
+.hero-foot p{margin:0}
+.hero-who{font-size:clamp(1rem,1.4vw,1.2rem);max-width:36ch}
+.hero-who strong{font-weight:600}
+.scroll-cue{display:flex;align-items:center;gap:10px;color:var(--mute)}
+.scroll-cue span{width:1.5px;height:44px;background:var(--line);position:relative;overflow:hidden}
+.scroll-cue span::after{content:"";position:absolute;left:0;right:0;top:0;height:40%;background:var(--ac);animation:drop 1.8s var(--ease) infinite}
+@keyframes drop{from{transform:translateY(-100%)}to{transform:translateY(260%)}}
+
+/* ================= MARQUEE ================= */
+.mq{background:var(--ac);color:var(--on-ac);overflow:hidden;padding-block:clamp(14px,2vw,22px);border-block:1px solid var(--line)}
+.mq-track{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mq-set{display:flex;align-items:center;gap:clamp(18px,3vw,40px);padding-right:clamp(18px,3vw,40px)}
+.mq-set span{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(1.8rem,4.2vw,3.6rem);line-height:1}
+.mq-set .logo{font-size:clamp(1.5rem,3.4vw,2.9rem)}
+.mq-set svg{width:clamp(22px,2.6vw,36px);height:auto;animation:spin 6s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ================= COMMON ================= */
+.sec{position:relative;padding-block:clamp(80px,12vw,170px)}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--mute);margin:0 0 20px}
+.eyebrow::before{content:"";width:28px;height:1.5px;background:var(--ac)}
+.st{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.86;font-size:clamp(3rem,9vw,8.5rem);margin:0;letter-spacing:-.005em;text-wrap:balance}
+.st .ac{color:var(--ac)}
+.st .ol{color:transparent;-webkit-text-stroke:2px var(--fg)}
+.lead{font-size:clamp(1.05rem,1.5vw,1.25rem);color:var(--mute);max-width:56ch;margin:0}
+.lead strong{color:var(--fg);font-weight:600}
+.head2{display:grid;grid-template-columns:1.25fr 1fr;gap:24px 56px;align-items:end;margin-bottom:clamp(40px,6vw,80px)}
+@media (max-width:900px){.head2{grid-template-columns:1fr}}
+
+/* ================= MANIFESTO ================= */
+.mani p{font-family:var(--body);font-weight:500;font-size:clamp(1.7rem,4.3vw,3.9rem);line-height:1.12;letter-spacing:-.025em;margin:0;max-width:30ch}
+.mani .wd{display:inline}
+.pill{display:inline-block;vertical-align:middle;width:1.6em;height:.9em;border-radius:99px;overflow:hidden;margin-inline:.08em;translate:0 -.06em}
+.pill img{width:100%;height:100%;object-fit:cover}
+.pill.wide{width:2.3em}
+.mani .hl{color:var(--ac)}
+.mani-meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:clamp(28px,4vw,48px);color:var(--mute)}
+
+/* ================= SERVICES (stack) ================= */
+.svc-list{display:grid;gap:clamp(20px,3vw,32px)}
+.svc{position:sticky;top:calc(84px + var(--i) * 26px);display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(20px,4vw,56px);
+  min-height:min(74svh,620px);border-radius:var(--r);padding:clamp(24px,4vw,56px);overflow:hidden;transform-origin:50% 0;will-change:transform}
+.svc.s1{background:var(--ac);color:var(--on-ac)}
+.svc.s2{background:#1C0B0B;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--line)}
+.svc.s3{background:var(--ac2);color:var(--on-ac2)}
+.svc-txt{display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.svc-top{display:flex;justify-content:space-between;gap:12px;opacity:.8}
+.svc h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(3rem,7vw,6.4rem);line-height:.84;margin:0}
+.svc p{margin:0;max-width:44ch;font-size:clamp(1rem,1.3vw,1.12rem);opacity:.88}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{border:1.5px solid currentColor;border-radius:99px;padding:5px 12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
+.svc-vis{position:relative;min-height:300px}
+.fan img{position:absolute;top:50%;left:50%;width:auto;max-width:none;height:80%;max-height:440px;aspect-ratio:9/16;object-fit:cover;border-radius:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);animation:float 6s ease-in-out infinite}
+.fan img:nth-child(1){translate:-98% -48%;rotate:-8deg;animation-delay:-1s}
+.fan img:nth-child(2){translate:-50% -52%;z-index:2;animation-delay:-3s}
+.fan img:nth-child(3){translate:-2% -46%;rotate:8deg;animation-delay:-2s}
+@keyframes float{50%{transform:translateY(-14px)}}
+.phone{position:absolute;left:50%;top:50%;translate:-50% -50%;height:92%;max-height:500px;aspect-ratio:9/19;border-radius:34px;border:6px solid #000;background:#000;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .6s,transform 2.6s linear}
+.phone img.on{opacity:1;transform:scale(1)}
+.phone .bars{position:absolute;left:10px;right:10px;top:12px;display:flex;gap:4px;z-index:2}
+.phone .bars i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.35);overflow:hidden}
+.phone .bars i::after{content:"";display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left}
+.phone .bars i.done::after{transform:scaleX(1)}
+.phone .bars i.go::after{transform:scaleX(1);transition:transform 2.4s linear}
+.phone .who{position:absolute;left:12px;top:24px;z-index:2;display:flex;align-items:center;gap:6px;color:#fff;font-size:11px;font-weight:600}
+.phone .who::before{content:"";width:20px;height:20px;border-radius:50%;background:var(--ac2);border:1.5px solid #fff}
+.yt{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:center;rotate:-4deg}
+.yt figure{margin:0;position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;box-shadow:0 20px 40px -18px rgba(0,0,0,.6);animation:float 7s ease-in-out infinite}
+.yt figure:nth-child(2){animation-delay:-2s;translate:0 18px}
+.yt figure:nth-child(3){animation-delay:-4s}
+.yt figure:nth-child(4){animation-delay:-5s;translate:0 18px}
+.yt img{width:100%;height:100%;object-fit:cover}
+.yt figure::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:#FF0033;transform-origin:left;animation:ytp 5s linear infinite}
+.yt figure:nth-child(2)::after{animation-delay:-1.5s}
+.yt figure:nth-child(3)::after{animation-delay:-3s}
+.yt figure:nth-child(4)::after{animation-delay:-4.2s}
+@keyframes ytp{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (max-width:860px){
+  .svc{grid-template-columns:1fr;min-height:0;top:calc(76px + var(--i) * 16px)}
+  .svc-vis{min-height:320px}
+  .fan img{height:72%}
+}
+
+/* ================= AGENCY (horizontal) ================= */
+.agency{background:radial-gradient(70% 80% at 85% 10%, rgba(110,4,8,.75), transparent 70%), radial-gradient(60% 70% at 0% 100%, rgba(110,4,8,.5), transparent 70%), var(--deep);color:var(--fg);position:relative;overflow:hidden}
+.ag-pin{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding-block:calc(84px + env(safe-area-inset-top,0px)) 28px}
+.ag-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.ag-head .eyebrow{color:inherit;opacity:.7;margin:0}
+.ag-view{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;align-self:center}
+.ag-view::-webkit-scrollbar{display:none}
+.agency.pinned .ag-view{overflow:visible;scroll-snap-type:none}
+.ag-track{display:flex;align-items:center;gap:clamp(14px,1.6vw,24px);width:max-content;padding:28px var(--gutter)}
+.ag-intro{width:min(78vw,620px);flex:none;scroll-snap-align:start}
+.ag-intro .st{color:inherit}
+.ag-intro .st .ol{-webkit-text-stroke-color:var(--fg)}
+.ag-intro p{margin:22px 0 0;opacity:.72;max-width:40ch}
+.ag-name{flex:none;width:max-content;min-width:clamp(200px,20vw,300px);margin-right:clamp(12px,2vw,32px);align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:16px;scroll-snap-align:start;border-left:1.5px solid currentColor;padding-left:clamp(16px,2vw,28px);margin-left:clamp(16px,3vw,48px)}
+.ag-name h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(3rem,6vw,5.6rem);line-height:.84;margin:0;white-space:nowrap}
+.ag-name h3 span{display:block;color:var(--ac)}
+.ag-name p{margin:0;opacity:.7}
+.ag-track .poster{flex:none;height:min(62svh,600px);width:auto;aspect-ratio:9/16;scroll-snap-align:start}
+.ag-end{flex:none;width:clamp(220px,26vw,360px);padding-left:clamp(20px,3vw,48px)}
+.ag-end a{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(2.2rem,4vw,3.6rem);line-height:.9;text-decoration:none;display:inline-block}
+.ag-end a span{color:var(--ac)}
+.ag-bar{height:3px;background:var(--line);border-radius:3px;overflow:hidden;margin-inline:var(--gutter)}
+.ag-bar i{display:block;height:100%;background:var(--ac);transform-origin:left;transform:scaleX(0)}
+@media (max-width:899px){.ag-track .poster{height:min(64svh,520px)}}
+
+/* ================= POSTERS / THUMBS ================= */
+.poster,.thumb{position:relative;display:block;padding:0;border:0;background:var(--bg2);cursor:zoom-in;overflow:hidden;border-radius:14px;isolation:isolate}
+.poster{aspect-ratio:9/16;width:100%}
+.thumb{aspect-ratio:16/9;width:100%;border-radius:12px}
+.poster img,.thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.poster:hover img,.thumb:hover img{transform:scale(1.07)}
+.poster::after,.thumb::after{content:attr(data-label);position:absolute;left:10px;bottom:10px;z-index:2;max-width:calc(100% - 20px);
+  background:var(--ac);color:var(--on-ac);border-radius:99px;padding:5px 11px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transform:translateY(140%);transition:transform .5s var(--ease)}
+.poster:hover::after,.thumb:hover::after,.poster:focus-visible::after,.thumb:focus-visible::after{transform:none}
+
+/* ================= PERSONAL (columns) ================= */
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,24px);align-items:start}
+.col{display:grid;gap:clamp(12px,1.8vw,24px)}
+.col.mid{margin-top:clamp(40px,10vw,160px)}
+@media (max-width:760px){.cols{grid-template-columns:repeat(2,minmax(0,1fr))}.col{display:contents}.col.mid{margin-top:0}}
+
+/* ================= MINIATURAS ================= */
+.minis{background:var(--bg2)}
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-t);position:absolute;inset:0;pointer-events:none}
+.glitch::before{color:var(--ac);animation:gl1 2.8s steps(1) infinite;clip-path:inset(10% 0 55% 0)}
+.glitch::after{color:var(--ac2);animation:gl2 2.8s steps(1) infinite;clip-path:inset(60% 0 8% 0)}
+@keyframes gl1{0%,86%,100%{transform:none;opacity:0}88%{transform:translate(-6px,-2px);opacity:1}92%{transform:translate(5px,1px);opacity:1}}
+@keyframes gl2{0%,86%,100%{transform:none;opacity:0}89%{transform:translate(6px,2px);opacity:1}94%{transform:translate(-4px,-1px);opacity:1}}
+.ctr{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:center;border-radius:var(--r);background:var(--bg);padding:clamp(24px,4vw,52px);margin-bottom:clamp(48px,7vw,90px)}
+@media (max-width:900px){.ctr{grid-template-columns:1fr}}
+.ctr-num{font-family:var(--display);font-weight:900;font-size:clamp(6rem,16vw,13rem);line-height:.8;color:var(--ac);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ctr-num small{font-size:.4em;vertical-align:top;margin-left:.04em}
+.ctr h3{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(1.8rem,3vw,2.6rem);line-height:.95;margin:0 0 10px}
+.ctr p{margin:0 0 18px;color:var(--mute);max-width:52ch}
+.ctr p strong{color:var(--fg)}
+.scale{display:grid;grid-template-columns:4fr 5fr 6fr;gap:6px}
+.scale div{border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;transform-origin:left}
+.scale div b{font-family:var(--display);font-weight:900;font-size:1.7rem;line-height:1}
+.scale div span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.scale .s-a{background:var(--line)}
+.scale .s-b{background:color-mix(in srgb, var(--ac) 45%, var(--bg))}
+.scale .s-c{background:var(--ac);color:var(--on-ac)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tab{cursor:pointer;border:1.5px solid var(--line);background:none;border-radius:99px;padding:9px 16px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;transition:all .3s}
+.tab:hover{border-color:var(--fg)}
+.tab[aria-selected="true"]{background:var(--ac);color:var(--on-ac);border-color:var(--ac)}
+.grid-t{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:900px){.grid-t{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.grid-t{grid-template-columns:1fr}}
+.sub{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px 24px;margin:clamp(56px,8vw,96px) 0 24px;border-top:1.5px solid var(--line);padding-top:20px}
+.sub h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(2rem,4vw,3.2rem);line-height:.9;margin:0}
+.sub p{margin:0;color:var(--mute);max-width:48ch}
+.ba-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:760px){.ba-grid{grid-template-columns:1fr}}
+.ba{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;user-select:none;touch-action:pan-y;--p:50%}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba .after{clip-path:inset(0 0 0 var(--p))}
+.ba .handle{position:absolute;top:0;bottom:0;left:var(--p);width:2px;background:#fff;translate:-1px 0;pointer-events:none}
+.ba .handle::after{content:"↔";position:absolute;top:50%;left:50%;width:44px;height:44px;translate:-50% -50%;border-radius:50%;background:var(--ac);color:var(--on-ac);display:grid;place-items:center;font-size:18px;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.ba .tag{position:absolute;top:10px;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:99px;pointer-events:none}
+.ba .tag.b{left:10px;background:rgba(0,0,0,.7);color:#fff}
+.ba .tag.a{right:10px;background:var(--ac);color:var(--on-ac)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba:has(input:focus-visible){outline:2px solid var(--ac);outline-offset:3px}
+
+/* ================= ABOUT ================= */
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px clamp(40px,6vw,96px);align-items:start}
+.about-side{position:sticky;top:110px}
+@media (max-width:900px){.about{grid-template-columns:1fr}.about-side{position:static}}
+.bio{font-size:clamp(1.25rem,2vw,1.7rem);line-height:1.3;font-weight:500;letter-spacing:-.01em;margin:0 0 20px}
+.bio em{font-style:normal;color:var(--ac)}
+.about p.m{color:var(--mute);margin:0 0 16px}
+.specs{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:10px}
+.specs li{display:flex;gap:14px;align-items:center;padding:14px 18px;border-radius:14px;background:var(--bg2);font-weight:500}
+.specs li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--ac)}
+.block{margin-top:clamp(40px,5vw,64px)}
+.block-h{display:flex;justify-content:space-between;gap:12px;color:var(--mute);border-bottom:1.5px solid var(--line);padding-bottom:12px;margin-bottom:6px}
+.edu{list-style:none;margin:0;padding:0}
+.edu li{display:grid;grid-template-columns:minmax(110px,.35fr) 1fr;gap:6px 20px;padding:18px 0;border-bottom:1px solid var(--line)}
+.edu .when{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ac);padding-top:4px}
+.edu h4{margin:0;font-size:1.15rem;font-weight:600;line-height:1.3}
+.edu p{margin:2px 0 0;color:var(--mute);font-size:15px}
+@media (max-width:520px){.edu li{grid-template-columns:1fr}}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ac);margin-right:8px;box-shadow:0 0 0 0 rgba(227,21,28,.6);animation:pulse 1.8s ease-out infinite}
+@keyframes pulse{to{box-shadow:0 0 0 10px rgba(227,21,28,0)}}
+.skills{display:grid;gap:14px;padding-top:14px}
+.sk{display:grid;gap:6px}
+.sk-top{display:flex;justify-content:space-between;gap:10px;font-weight:500}
+.sk-top span:last-child{font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.04em;text-transform:uppercase}
+.sk-bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden}
+.sk-bar i{display:block;height:100%;width:var(--w);border-radius:99px;background:var(--ac);transform-origin:left}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips span{border:1.5px solid var(--line);border-radius:99px;padding:6px 12px;font-size:14px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(40px,5vw,64px)}
+@media (max-width:640px){.facts{grid-template-columns:1fr}}
+.fact{border-radius:16px;background:var(--bg2);padding:18px}
+.fact .mono{color:var(--mute)}
+.fact p{margin:6px 0 0;font-weight:600;font-size:1.05rem}
+
+/* ================= CONTACT ================= */
+.contact{background:var(--ac);color:var(--on-ac);overflow:hidden;padding-bottom:clamp(60px,8vw,110px)}
+.big-mq{display:flex;width:max-content;animation:mq 22s linear infinite;margin-bottom:clamp(30px,5vw,64px)}
+.big-mq span{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(5rem,19vw,17rem);line-height:.82;padding-right:.2em;white-space:nowrap}
+.big-mq span:nth-child(even){color:transparent;-webkit-text-stroke:2px var(--on-ac)}
+.contact .eyebrow{color:inherit;opacity:.8}
+.contact .eyebrow::before{background:var(--on-ac)}
+.links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.links{grid-template-columns:1fr}}
+.lk{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;padding:22px 24px;border-radius:20px;border:1.5px solid color-mix(in srgb, var(--on-ac) 35%, transparent);text-decoration:none;transition:background .4s, color .4s}
+a.lk:hover,.lk:has(a:hover){background:var(--on-ac);color:var(--ac)}
+.lk .mono{display:block;opacity:.75;margin-bottom:4px}
+.lk .v{font-size:clamp(1.1rem,2vw,1.5rem);font-weight:600;word-break:break-word;text-decoration:none}
+.lk .arr{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1.5px solid currentColor;transition:transform .5s var(--ease)}
+.lk:hover .arr{transform:rotate(-45deg)}
+.copy{cursor:pointer;border:1.5px solid currentColor;background:none;border-radius:99px;padding:9px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;min-width:92px}
+.copy.ok{background:currentColor}
+.copy.ok span{color:var(--ac)}
+.lk:has(a:hover) .copy.ok span{color:var(--on-ac)}
+
+/* ================= FOOTER ================= */
+.foot{background:var(--deep);color:var(--fg);padding-top:clamp(40px,6vw,80px);overflow:hidden}
+.foot-logo b{color:var(--ac)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;opacity:.75}
+.foot-row a{text-decoration:none}
+.foot-logo{font-size:clamp(2.4rem,12.4vw,14rem);letter-spacing:-.045em;line-height:.9;padding-block:clamp(16px,3vw,40px) clamp(70px,8vw,90px);text-align:center;display:block}
+
+/* ================= LIGHTBOX ================= */
+.lb{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100%;height:100%;background:color-mix(in srgb, var(--bg) 94%, transparent);color:var(--fg)}
+.lb::backdrop{background:transparent}
+.lb[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.lb-top,.lb-bot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px var(--gutter)}
+.lb-top{padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.lb-bot{padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+.lb-stage{display:grid;place-items:center;min-height:0;padding-inline:var(--gutter)}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:14px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);animation:lbIn .6s var(--ease)}
+@keyframes lbIn{from{opacity:0;transform:translateY(30px) scale(.96)}to{opacity:1;transform:none}}
+.lb-btn{cursor:pointer;background:none;border:1.5px solid var(--line);border-radius:99px;padding:10px 16px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+.lb-btn:hover{background:var(--ac);border-color:var(--ac);color:var(--on-ac)}
+.lb .count{color:var(--mute);font-variant-numeric:tabular-nums}
+
+</style>
+<script>
+(function(){
+  var d = document.documentElement, seen = false;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try { seen = sessionStorage.getItem('tz-intro'); } catch (e) {}
+  if (!seen) { d.classList.add('intro-on'); setTimeout(function(){ d.classList.remove('intro-on'); }, 8000); }
+})();
+</script>
+</head>
+<body>
+
+<!-- ============ INTRO ============ -->
+<div class="intro" aria-hidden="true">
+  <div class="intro-bg b"></div>
+  <div class="intro-bg a"></div>
+  <div class="intro-ui">
+    <div class="intro-top mono"><span><span class="c">Portfolio ©2026</span></span><span><span class="c">Rosario, AR</span></span></div>
+    <div class="intro-flip"><img src="img/pieza-06.webp" alt=""></div>
+    <div class="intro-bot">
+      <div class="intro-logo logo" data-split>torra <b>zalazar</b></div>
+      <div class="intro-count">000</div>
+    </div>
+  </div>
+  <button class="intro-skip mono" type="button" tabindex="-1">Saltar intro</button>
+</div>
+
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true">VER</div>
+
+<header class="hdr">
+  <a class="logo" href="#inicio" aria-label="torra zalazar, inicio">torra <b>zalazar</b></a>
+  <div class="clock mono" aria-hidden="true"><span>En vivo</span><b>00:00</b></div>
+  <button class="menu-btn mono" type="button" aria-expanded="false" aria-controls="menu">Menú <span class="bars"></span></button>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menú">
+  <div class="menu-top"><span class="logo">torra <b>zalazar</b></span><button class="menu-close mono" type="button">Cerrar</button></div>
+  <nav aria-label="Secciones">
+    <a href="#servicios"><span data-split>Servicios</span></a>
+    <a href="#trabajos"><span data-split>Matchdays</span></a>
+    <a href="#miniaturas"><span data-split>Miniaturas</span></a>
+    <a href="#sobre-mi"><span data-split>Sobre mí</span></a>
+    <a href="#contacto"><span data-split>Contacto</span></a>
+  </nav>
+  <div class="menu-foot mono">
+    <a href="mailto:guillevtz4@gmail.com">guillevtz4@gmail.com</a>
+    <a href="https://instagram.com/torrazalazar" target="_blank" rel="noopener">Instagram ↗</a>
+    <a href="https://www.behance.net/torrazalazar" target="_blank" rel="noopener">Behance ↗</a>
+  </div>
+</div>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <svg class="pitch" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="dr" d="M800 0V900"/>
+    <circle class="dr" cx="800" cy="450" r="150"/>
+    <circle class="dr" cx="800" cy="450" r="4"/>
+    <path class="dr" d="M0 180H250V720H0"/>
+    <path class="dr" d="M0 320H90V580H0"/>
+    <path class="dr" d="M250 360A120 120 0 0 1 250 540"/>
+    <path class="dr" d="M1600 180H1350V720H1600"/>
+    <path class="dr" d="M1600 320H1510V580H1600"/>
+    <path class="dr" d="M1350 360A120 120 0 0 0 1350 540"/>
+  </svg>
+  <div class="hero-main wrap">
+    <p class="hero-meta mono"><b>Diseñador gráfico</b><span>Rosario, Santa Fe, AR</span><span>Remoto / híbrido</span></p>
+    <h1 class="hero-h" aria-label="Diseño deportivo, para redes y de miniaturas">
+      <span class="row" data-split aria-hidden="true">Diseño</span>
+      <span class="row ac slot" aria-hidden="true"><span data-split>deportivo</span><span data-split>para redes</span><span data-split>miniaturas</span></span>
+    </h1>
+  </div>
+  <div class="hero-foot wrap">
+    <p class="hero-who"><strong>Guillermo Valentín Torra Zalazar.</strong> Estudiante avanzado de Diseño Gráfico (FAPyD, UNR) con foco en la industria gráfica deportiva. Hoy, pasante en Club Atlético Newell's Old Boys.</p>
+    <p class="scroll-cue mono"><span></span>Scroll</p>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-track">
+    <div class="mq-set"><span class="logo">torra <b>zalazar</b></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg><span>Matchday</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg><span>Fotomanipulación</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg><span>Miniaturas</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg><span>Redes sociales</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></div>
+    <div class="mq-set"><span class="logo">torra <b>zalazar</b></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg><span>Matchday</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg><span>Fotomanipulación</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg><span>Miniaturas</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg><span>Redes sociales</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></div>
+  </div>
+</div>
+
+<!-- ============ MANIFIESTO ============ -->
+<section class="sec mani">
+  <div class="wrap">
+    <p class="eyebrow mono">Enfoque</p>
+    <p data-words>Aplico los fundamentos del diseño clásico, <span class="hl">tipografía</span>, <span class="hl">color</span> y <span class="hl">composición</span> al dinamismo visual que exige la comunicación deportiva moderna, para clubes, atletas y creadores de contenido.</p>
+    <div class="mani-meta mono"><span>Fotomanipulación</span><span>Retoque de atletas</span><span>Sistemas matchday</span><span>Manuales de marca</span></div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="sec" id="servicios" style="padding-top:0">
+  <div class="wrap">
+    <div class="head2">
+      <div><p class="eyebrow mono">Servicios</p><h2 class="st" data-split>Tres <span class="ac">formatos</span></h2></div>
+      <p class="lead rv">Del póster vertical para el día de partido a la miniatura que decide si alguien hace clic. <strong>Mismo criterio, distinto formato.</strong></p>
+    </div>
+    <div class="svc-list">
+      <article class="svc s1" style="--i:0">
+        <div class="svc-txt">
+          <div class="svc-top mono"><span>Matchday</span><span>1080 × 1920</span></div>
+          <div>
+            <h3>Diseño<br>deportivo</h3>
+          </div>
+          <p>Anuncios de partido y piezas de jugador. Fotomanipulación y retoque digital de atletas, siempre dentro de los manuales de marca de cada institución.</p>
+          <div class="tags"><span>Matchday</span><span>Retoque</span><span>Fotomanipulación</span></div>
+        </div>
+        <div class="svc-vis fan" aria-hidden="true">
+          <img src="img/pinero-3.webp" alt="" loading="lazy" width="720" height="1280">
+          <img src="img/pieza-03.webp" alt="" loading="lazy" width="720" height="1280">
+          <img src="img/negri-2.webp" alt="" loading="lazy" width="720" height="1280">
+        </div>
+      </article>
+      <article class="svc s2" style="--i:1">
+        <div class="svc-txt">
+          <div class="svc-top mono"><span>Stories · Feed</span><span>9:16 · 4:5</span></div>
+          <h3>Diseño<br>para redes</h3>
+          <p>Sistemas gráficos para redes sociales: una línea visual reconocible que el club, la marca o el atleta sostiene fecha a fecha.</p>
+          <div class="tags"><span>Sistemas</span><span>Plantillas</span><span>Identidad</span></div>
+        </div>
+        <div class="svc-vis" aria-hidden="true">
+          <div class="phone" data-story>
+            <div class="bars"><i></i><i></i><i></i><i></i></div>
+            <span class="who">torrazalazar</span>
+            <img class="on" src="img/negri-1.webp" alt="" loading="lazy" width="720" height="1280">
+            <img src="img/negri-4.webp" alt="" loading="lazy" width="720" height="1280">
+            <img src="img/negri-5.webp" alt="" loading="lazy" width="720" height="1280">
+            <img src="img/negri-6.webp" alt="" loading="lazy" width="720" height="1280">
+          </div>
+        </div>
+      </article>
+      <article class="svc s3" style="--i:2">
+        <div class="svc-txt">
+          <div class="svc-top mono"><span>YouTube</span><span>1280 × 720</span></div>
+          <h3>Miniaturas</h3>
+          <p>Miniaturas pensadas para el CTR: una jerarquía visual clara para que el espectador entienda el video en menos de un segundo y haga clic.</p>
+          <div class="tags"><span>CTR</span><span>Jerarquía</span><span>Deportes</span><span>Cripto</span></div>
+        </div>
+        <div class="svc-vis" aria-hidden="true">
+          <div class="yt">
+            <figure><img src="img/despues-4.webp" alt="" loading="lazy" width="1280" height="720"></figure>
+            <figure><img src="img/cripto-6.webp" alt="" loading="lazy" width="1280" height="720"></figure>
+            <figure><img src="img/deportes-4.webp" alt="" loading="lazy" width="1280" height="720"></figure>
+            <figure><img src="img/despues-1.webp" alt="" loading="lazy" width="1280" height="720"></figure>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AGENCIA (horizontal) ============ -->
+<section class="agency" id="trabajos">
+  <div class="ag-pin">
+    <div class="ag-head wrap">
+      <p class="eyebrow mono">Trabajo para agencia · 12 piezas</p>
+      <p class="mono" style="opacity:.6;margin:0">Arrastrá o scrolleá →</p>
+    </div>
+    <div class="ag-view">
+      <div class="ag-track">
+        <div class="ag-intro">
+          <h2 class="st">Match<span class="ac">day</span><br><span class="ol">series</span></h2>
+          <p>Sistemas matchday para dos jugadores representados por la agencia: una serie por atleta, con identidad propia en cada fecha.</p>
+        </div>
+        <div class="ag-name"><h3>Franco<span>Negri</span></h3><p class="mono">6 piezas · MLS</p></div>
+        <button class="poster" type="button" data-lb="negri" data-label="Franco Negri · 01"><img src="img/negri-1.webp" alt="Matchday de Franco Negri vs Sporting KC" loading="lazy" width="720" height="1280"></button>
+        <button class="poster" type="button" data-lb="negri" data-label="Franco Negri · 02"><img src="img/negri-2.webp" alt="Matchday de Franco Negri vs Colorado Rapids" loading="lazy" width="720" height="1280"></button>
+        <button class="poster" type="button" data-lb="negri" data-label="Franco Negri · 03"><img src="img/negri-3.webp" alt="Pieza de Franco Negri al atardecer en el estadio" loading="lazy" width="720" height="1280"></button>
+        <button class="poster" type="button" data-lb="negri" data-label="Franco Negri · 04"><img src="img/negri-4.webp" alt="Matchday de Franco Negri con tipografía serif" loading="lazy" width="720" height="1280"></button>
+        <button class="poster" type="button" data-lb="negri" data-label="Franco Negri · 05"><img src="img/negri-5.webp" alt="Matchday de Franco Negri en el Snapdragon Stadium" loading="lazy" width="720" height="1280"></button>
+        <button class="poster" type="button" data-lb="negri" data-label="Franco Negri · 06"><img src="img/negri-6.webp" alt="Matchday de Franco Negri con la camiseta 22" loading="lazy" width="720" height="1280"></button>
+        <div class="ag-name"><h3>Lisandro<span>Piñero</span></h3><p class="mono">6 piezas · Banfield</p></div>
+        <button class="poster" type="button" data-lb="pinero" data-label="Lisandro Piñero · 01"><img src="img/pinero-1.webp" alt="Pieza de Lisandro Piñero con la camiseta de Banfield" loading="lazy" width="720" height="1280"></button>
+        <button class="poster" type="button" data-lb="pinero" data-label="Lisandro Piñero · 02"><img src="img/pinero-2.webp" alt="Matchday de Banfield con Lisandro Piñero" loading="lazy" width="720" height="1280"></button>
+        <button class="poster" type="button" data-lb="pinero" data-label="Lisandro Piñero · 03"><img src="img/pinero-3.webp" alt="Banfield vs Lanús con Lisandro Piñero" loading="lazy" width="720" height="1280"></button>
+        <button class="poster" type="button" data-lb="pinero" data-label="Lisandro Piñero · 04"><img src="img/pinero-4.webp" alt="Lisandro Piñero en el Estadio Florencio Sola" loading="lazy" width="720" height="1280"></button>
+        <button class="poster" type="button" data-lb="pinero" data-label="Lisandro Piñero · 05"><img src="img/pinero-5.webp" alt="Matchday Banfield vs Lanús de noche" loading="lazy" width="720" height="1280"></button>
+        <button class="poster" type="button" data-lb="pinero" data-label="Lisandro Piñero · 06"><img src="img/pinero-6.webp" alt="Pieza de Banfield con Lisandro Piñero y la hinchada" loading="lazy" width="720" height="1280"></button>
+        <div class="ag-end"><a href="#personales">Proyectos<br><span>personales ↓</span></a></div>
+      </div>
+    </div>
+    <div class="ag-bar" aria-hidden="true"><i></i></div>
+  </div>
+</section>
+
+<!-- ============ PERSONALES ============ -->
+<section class="sec" id="personales">
+  <div class="wrap">
+    <div class="head2">
+      <div><p class="eyebrow mono">Proyectos personales · 12 piezas</p><h2 class="st" data-split>Pruebas <span class="ol">de</span> <span class="ac">diseño</span></h2></div>
+      <p class="lead rv">Clubes y selecciones como excusa para explorar: <strong>cada pieza prueba una dirección de arte distinta</strong>, del collage tipográfico al retrato en color plano.</p>
+    </div>
+    <div class="cols">
+      <div class="col" data-speed="-8">
+        <button class="poster rv" type="button" data-lb="personal" data-label="Matchday · naranja"><img src="img/pieza-01.webp" alt="Matchday con jugador de camiseta naranja y firma caligráfica" loading="lazy" width="720" height="1280"></button>
+        <button class="poster rv" type="button" data-lb="personal" data-label="Selección Argentina"><img src="img/pieza-04.webp" alt="Jugador de la Selección Argentina sobre fondo amarillo y celeste" loading="lazy" width="720" height="1280"></button>
+        <button class="poster rv" type="button" data-lb="personal" data-label="RC Strasbourg"><img src="img/pieza-07.webp" alt="Pieza del Racing Club de Strasbourg en azul" loading="lazy" width="687" height="1221"></button>
+        <button class="poster rv" type="button" data-lb="personal" data-label="Match Day"><img src="img/pieza-10.webp" alt="Match Day en blanco y negro con textura" loading="lazy" width="720" height="1280"></button>
+      </div>
+      <div class="col mid" data-speed="10">
+        <button class="poster rv" type="button" data-lb="personal" data-label="Racing Club"><img src="img/pieza-02.webp" alt="Pieza de Racing Club en tonos celestes" loading="lazy" width="720" height="1280"></button>
+        <button class="poster rv" type="button" data-lb="personal" data-label="West Ham · Matchday"><img src="img/pieza-05.webp" alt="Matchday de West Ham en London Stadium" loading="lazy" width="720" height="1280"></button>
+        <button class="poster rv" type="button" data-lb="personal" data-label="Independiente vs Instituto"><img src="img/pieza-08.webp" alt="Independiente vs Instituto, pieza en rojo" loading="lazy" width="720" height="1280"></button>
+        <button class="poster rv" type="button" data-lb="personal" data-label="Girona vs Levante"><img src="img/pieza-11.webp" alt="Pieza de Girona con tipografía gigante en rojo" loading="lazy" width="720" height="1280"></button>
+      </div>
+      <div class="col" data-speed="-14">
+        <button class="poster rv" type="button" data-lb="personal" data-label="Vasco da Gama"><img src="img/pieza-03.webp" alt="Matchday de Vasco da Gama en rojo, negro y blanco" loading="lazy" width="720" height="1280"></button>
+        <button class="poster rv" type="button" data-lb="personal" data-label="San Lorenzo vs Huracán"><img src="img/pieza-06.webp" alt="San Lorenzo vs Huracán, pieza en rojo y azul" loading="lazy" width="720" height="1280"></button>
+        <button class="poster rv" type="button" data-lb="personal" data-label="Selección Argentina"><img src="img/pieza-09.webp" alt="Jugador de la Selección Argentina con fondo geométrico" loading="lazy" width="720" height="1280"></button>
+        <button class="poster rv" type="button" data-lb="personal" data-label="Inter Miami"><img src="img/pieza-12.webp" alt="Matchday de Inter Miami en rosa" loading="lazy" width="720" height="1280"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MINIATURAS ============ -->
+<section class="sec minis" id="miniaturas">
+  <div class="wrap">
+    <div class="head2">
+      <div><p class="eyebrow mono">Miniaturas · YouTube</p><h2 class="st"><span data-split>Jerarquía</span><br><span class="ol">vs.</span> <span class="ac glitch" data-t="ruido">ruido</span></h2></div>
+      <p class="lead rv">Una miniatura básica intenta mostrarlo todo: personaje, fondo, objeto, logo y mucho texto. Yo decido <strong>qué se ve primero, qué segundo y qué tercero</strong>, para guiar la mirada y forzar la lectura en menos de un segundo.</p>
+    </div>
+
+    <div class="ctr rv">
+      <div class="ctr-num" aria-hidden="true"><span data-count>+10</span><small>%</small></div>
+      <div>
+        <h3>¿Qué es el CTR?</h3>
+        <p>Click-Through Rate, o tasa de clics: el porcentaje de personas que ven tu miniatura y <strong>deciden hacer clic para ver el video</strong>. Mi objetivo es llevar tus videos del promedio a la zona viral con diseño estratégico.</p>
+        <div class="scale" role="img" aria-label="CTR promedio 2 a 4 por ciento, bueno 5 a 9 por ciento, viral más de 10 por ciento">
+          <div class="s-a"><b>2–4%</b><span>Promedio</span></div>
+          <div class="s-b"><b>5–9%</b><span>Bueno</span></div>
+          <div class="s-c"><b>+10%</b><span>Viral</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-t">
+      <button class="thumb rv" type="button" data-lb="mini" data-label="Deportes · Real Madrid"><img src="img/deportes-4.webp" alt="Miniatura de Real Madrid: disponible y no juega por lesión" loading="lazy" width="1280" height="720"></button>
+      <button class="thumb rv" type="button" data-lb="mini" data-label="Deportes · ¿Sorpresa en el 11?"><img src="img/deportes-6.webp" alt="Miniatura: sorpresa en el 11, entrenador leyendo un libro" loading="lazy" width="1280" height="720"></button>
+      <button class="thumb rv" type="button" data-lb="mini" data-label="Cripto · XRP"><img src="img/cripto-1.webp" alt="Miniatura: XRP muestra debilidad" loading="lazy" width="1280" height="720"></button>
+      <button class="thumb rv" type="button" data-lb="mini" data-label="Cripto · En directo"><img src="img/cripto-2.webp" alt="Miniatura: operando en directo" loading="lazy" width="1280" height="720"></button>
+      <button class="thumb rv" type="button" data-lb="mini" data-label="Cripto · Compra de XRP"><img src="img/cripto-3.webp" alt="Miniatura: prepara la compra de XRP" loading="lazy" width="1280" height="720"></button>
+      <button class="thumb rv" type="button" data-lb="mini" data-label="Cripto · Bitcoin"><img src="img/cripto-4.webp" alt="Miniatura: empieza el descenso del Bitcoin" loading="lazy" width="1280" height="720"></button>
+      <button class="thumb rv" type="button" data-lb="mini" data-label="Cripto · BTC fase 3"><img src="img/cripto-5.webp" alt="Miniatura: BTC en fase 3" loading="lazy" width="1280" height="720"></button>
+      <button class="thumb rv" type="button" data-lb="mini" data-label="Cripto · El mercado sangra"><img src="img/cripto-6.webp" alt="Miniatura: el mercado sangra" loading="lazy" width="1280" height="720"></button>
+    </div>
+
+    <div class="sub">
+      <h3>Antes y después</h3>
+      <p>La miniatura original del canal contra mi rediseño. Arrastrá el control para comparar.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba rv"><img src="img/antes-1.webp" alt="Antes: miniatura original sobre GPUs Nvidia" loading="lazy" width="640" height="360"><img class="after" src="img/despues-1.webp" alt="Después: rediseño Bye Bye GPUs Nvidia" loading="lazy" width="1280" height="720"><span class="tag b">Antes</span><span class="tag a">Después</span><span class="handle"></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después, miniatura Nvidia"></div>
+      <div class="ba rv"><img src="img/antes-2.webp" alt="Antes: miniatura original sobre Windows 11" loading="lazy" width="640" height="360"><img class="after" src="img/despues-2.webp" alt="Después: rediseño El nuevo Windows tendrá esto" loading="lazy" width="1280" height="720"><span class="tag b">Antes</span><span class="tag a">Después</span><span class="handle"></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después, miniatura Windows"></div>
+      <div class="ba rv"><img src="img/antes-3.webp" alt="Antes: miniatura original del parque temático, día 5" loading="lazy" width="640" height="360"><img class="after" src="img/despues-3.webp" alt="Después: rediseño Día 5 en el parque" loading="lazy" width="1280" height="720"><span class="tag b">Antes</span><span class="tag a">Después</span><span class="handle"></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después, miniatura parque temático"></div>
+      <div class="ba rv"><img src="img/antes-4.webp" alt="Antes: miniatura original de la review de Pogba" loading="lazy" width="640" height="360"><img class="after" src="img/despues-4.webp" alt="Después: rediseño El mejor Pogba de FC26" loading="lazy" width="1280" height="720"><span class="tag b">Antes</span><span class="tag a">Después</span><span class="handle"></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después, miniatura Pogba"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE MÍ ============ -->
+<section class="sec" id="sobre-mi">
+  <div class="wrap about">
+    <div class="about-side">
+      <p class="eyebrow mono">Sobre mí</p>
+      <h2 class="st" data-split>Sobre <span class="ac">mí</span></h2>
+    </div>
+    <div>
+      <p class="bio rv">Soy Guillermo, estudiante avanzado de Diseño Gráfico con un enfoque específico y experiencia técnica en la <em>industria gráfica deportiva</em>.</p>
+      <p class="m rv">Me interesa la creatividad, el diseño digital y la comunicación visual. Trabajo de forma comprometida y organizada, y siempre con ganas de nuevos desafíos.</p>
+      <ul class="specs">
+        <li class="rv">Fotomanipulación y retoque digital de atletas</li>
+        <li class="rv">Sistemas gráficos para redes sociales (matchday)</li>
+        <li class="rv">Adaptación a manuales de marca de instituciones deportivas</li>
+      </ul>
+
+      <div class="block rv">
+        <div class="block-h mono"><span>Experiencia</span><span>2026 → hoy</span></div>
+        <ol class="edu">
+          <li><span class="when"><span class="live-dot"></span>Jul 2026 · Actualidad</span><div><h4>Club Atlético Newell's Old Boys</h4><p>Pasantía</p></div></li>
+        </ol>
+      </div>
+
+      <div class="block rv">
+        <div class="block-h mono"><span>Formación</span><span>2023 → hoy</span></div>
+        <ol class="edu">
+          <li><span class="when">2023 · En curso</span><div><h4>Licenciatura en Diseño Gráfico</h4><p>Facultad de Arquitectura, Planeamiento y Diseño, UNR (FAPyD)</p></div></li>
+          <li><span class="when">Sep – Nov 2023</span><div><h4>Photoshop e Illustrator Flex</h4><p>Coderhouse</p></div></li>
+          <li><span class="when">Secundario</span><div><h4>Bachillerato en Ciencias Naturales</h4><p>Escuela de Nivel Inicial, Primario y Secundario Técnico “Jesús de Nazaret”</p></div></li>
+        </ol>
+      </div>
+
+      <div class="block rv">
+        <div class="block-h mono"><span>Herramientas</span><span>Nivel</span></div>
+        <div class="skills">
+          <div class="sk"><div class="sk-top"><span>Adobe Photoshop</span><span>Avanzado</span></div><div class="sk-bar"><i style="--w:94%"></i></div></div>
+          <div class="sk"><div class="sk-top"><span>Adobe Illustrator</span><span>Intermedio–avanzado</span></div><div class="sk-bar"><i style="--w:83%"></i></div></div>
+          <div class="sk"><div class="sk-top"><span>Adobe InDesign</span><span>Intermedio</span></div><div class="sk-bar"><i style="--w:61%"></i></div></div>
+          <div class="sk"><div class="sk-top"><span>Adobe Lightroom</span><span>Intermedio</span></div><div class="sk-bar"><i style="--w:50%"></i></div></div>
+          <div class="sk"><div class="sk-top"><span>Adobe Premiere Pro</span><span>Básico</span></div><div class="sk-bar"><i style="--w:25%"></i></div></div>
+        </div>
+        <div class="chips"><span>Figma</span><span>Camera RAW</span></div>
+      </div>
+
+      <div class="facts">
+        <div class="fact rv"><span class="mono">Idiomas</span><p>Español nativo · Inglés básico</p></div>
+        <div class="fact rv"><span class="mono">Modalidad</span><p>Remota e híbrida</p></div>
+        <div class="fact rv"><span class="mono">Base</span><p>Rosario, Santa Fe</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec contact" id="contacto">
+  <div class="big-wrap" aria-hidden="true"><div class="big-mq"><span>Hablemos</span><span>Hablemos</span><span>Hablemos</span><span>Hablemos</span></div></div>
+  <div class="wrap">
+    <p class="eyebrow mono">Contacto · ¿Arrancamos el próximo proyecto?</p>
+    <div class="links">
+      <div class="lk rv"><div><span class="mono">Email</span><a class="v" href="mailto:guillevtz4@gmail.com">guillevtz4@gmail.com</a></div><button class="copy" type="button" data-copy="guillevtz4@gmail.com"><span>Copiar</span></button></div>
+      <div class="lk rv"><div><span class="mono">Teléfono</span><a class="v" href="tel:+543413911100">+54 341 391-1100</a></div><button class="copy" type="button" data-copy="+543413911100"><span>Copiar</span></button></div>
+      <a class="lk rv" href="https://instagram.com/torrazalazar" target="_blank" rel="noopener"><div><span class="mono">Instagram</span><span class="v">@torrazalazar</span></div><span class="arr" aria-hidden="true">↗</span></a>
+      <a class="lk rv" href="https://www.behance.net/torrazalazar" target="_blank" rel="noopener"><div><span class="mono">Behance</span><span class="v">behance.net/torrazalazar</span></div><span class="arr" aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row mono"><span>© 2026 Guillermo Torra Zalazar</span><span>Diseñador gráfico · Rosario, AR</span><a href="#inicio">Volver arriba ↑</a></div>
+  <span class="foot-logo logo" data-split aria-label="torra zalazar">torra <b>zalazar</b></span>
+</footer>
+
+<dialog class="lb" aria-label="Visor de piezas">
+  <div class="lb-top mono"><span class="cap"></span><button class="lb-btn" type="button" data-lb-close>Cerrar ✕</button></div>
+  <div class="lb-stage"><img alt=""></div>
+  <div class="lb-bot mono"><button class="lb-btn" type="button" data-lb-prev>← Anterior</button><span class="count"></span><button class="lb-btn" type="button" data-lb-next>Siguiente →</button></div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var d = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(pointer: fine)').matches;
+  var G = window.gsap, ST = window.ScrollTrigger, hasG = !!(G && ST);
+  if (hasG) G.registerPlugin(ST);
+  var $ = function(s, c){ return (c || document).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var POSTERS = ['pieza-06','negri-2','pieza-11','pinero-3','pieza-03','negri-5','pieza-12','pinero-6','pieza-08','negri-1','pieza-04','pinero-2','pieza-09','negri-4','pieza-02','pinero-5','pieza-05','pieza-07','pieza-10','pieza-01'].map(function(n){ return 'img/' + n + '.webp'; });
+
+  /* ---------- split text into masked chars ---------- */
+  function split(el){
+    if (el._split) return el._split;
+    var chars = [];
+    (function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(t){
+        if (t.nodeType === 1) { walk(t); return; }
+        if (t.nodeType !== 3 || !t.textContent.trim()) return;
+        var frag = document.createDocumentFragment();
+        t.textContent.split(/(\s+)/).forEach(function(w){
+          if (!w) return;
+          if (/^\s+$/.test(w)) { frag.appendChild(document.createTextNode(' ')); return; }
+          var ww = document.createElement('span'); ww.className = 'w';
+          w.split('').forEach(function(ch){ var c = document.createElement('span'); c.className = 'c'; c.textContent = ch; ww.appendChild(c); chars.push(c); });
+          frag.appendChild(ww);
+        });
+        node.replaceChild(frag, t);
+      });
+    })(el);
+    el._split = chars; return chars;
+  }
+  $$('[data-split]').forEach(split);
+
+  /* ---------- hero slot word fit ---------- */
+  var heroH = $('.hero-h'), slot = $('.slot');
+  function fitHero(){
+    heroH.style.fontSize = '';
+    var max = heroH.parentNode.clientWidth, w = 0;
+    $$(':scope > span', slot).forEach(function(s){ w = Math.max(w, s.scrollWidth); });
+    if (w > max) heroH.style.fontSize = (parseFloat(getComputedStyle(heroH).fontSize) * max / w * 0.98) + 'px';
+  }
+  fitHero();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ fitHero(); if (hasG) ST.refresh(); });
+  window.addEventListener('resize', fitHero);
+
+  /* ---------- hero entrance + slot cycling ---------- */
+  function heroIn(){
+    if (!hasG) return;
+    G.from($$('.hero-h .row:first-child .c').concat(split(slot.children[0])), { yPercent: 115, duration: 1.2, ease: 'expo.out', stagger: 0.035 });
+    G.from('.hero-meta > *, .hero-foot > *', { y: 24, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08, delay: 0.3 });
+    $$('.pitch .dr').forEach(function(p){
+      var len = p.getTotalLength ? p.getTotalLength() : 1000;
+      G.fromTo(p, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut', delay: 0.2 + Math.random() * 0.5 });
+    });
+    startSlot();
+  }
+  function startSlot(){
+    var words = Array.prototype.slice.call(slot.children), i = 0;
+    slot.classList.add('live');
+    words.forEach(function(w, j){ if (j) G.set(split(w), { yPercent: 170 }); });
+    setInterval(function(){
+      if (document.hidden) return;
+      var cur = split(words[i]); i = (i + 1) % words.length; var nxt = split(words[i]);
+      G.to(cur, { yPercent: -170, duration: 0.7, ease: 'expo.in', stagger: 0.025 });
+      G.fromTo(nxt, { yPercent: 170 }, { yPercent: 0, duration: 1, ease: 'expo.out', stagger: 0.03, delay: 0.55 });
+    }, 3000);
+  }
+
+  /* ---------- intro ---------- */
+  function intro(done){
+    if (!d.classList.contains('intro-on')) { done(); return; }
+    if (!hasG) { d.classList.remove('intro-on'); done(); return; }
+    var flip = $('.intro-flip img'), count = $('.intro-count');
+    POSTERS.slice(0, 12).forEach(function(src){ var im = new Image(); im.src = src; });
+    var o = { v: 0 }, last = -1;
+    var tl = G.timeline({ onComplete: function(){
+      d.classList.remove('intro-on');
+      try { sessionStorage.setItem('tz-intro', '1'); } catch (e) {}
+      done();
+    } });
+    tl.from(split($('.intro-logo')), { yPercent: 120, duration: 0.8, ease: 'expo.out', stagger: 0.04 })
+      .from('.intro-top .c', { yPercent: 120, duration: 0.8, ease: 'expo.out' }, 0)
+      .from('.intro-flip', { clipPath: 'inset(50% 0% 50% 0%)', duration: 0.8, ease: 'expo.inOut' }, 0.1)
+      .from('.intro-count', { opacity: 0, duration: 0.4 }, 0.2)
+      .to(o, { v: 100, duration: 2.2, ease: 'power2.inOut', onUpdate: function(){
+          var v = Math.round(o.v); count.textContent = String(v).padStart(3, '0');
+          var k = Math.floor(o.v / 8.4) % 12; if (k !== last) { last = k; flip.src = POSTERS[k]; }
+        } }, 0.2)
+      .to('.intro-flip', { scale: 1.12, duration: 2.2, ease: 'power2.inOut' }, 0.2)
+      .to(split($('.intro-logo')).concat($$('.intro-top .c')), { yPercent: -120, duration: 0.6, ease: 'expo.in', stagger: 0.015 }, '>-0.1')
+      .to('.intro-count', { yPercent: -40, opacity: 0, duration: 0.5, ease: 'expo.in' }, '<')
+      .to('.intro-flip', { clipPath: 'inset(0% 0% 100% 0%)', duration: 0.7, ease: 'expo.inOut' }, '<0.1')
+      .to('.intro-skip', { opacity: 0, duration: 0.3 }, '<')
+      .to('.intro-bg.a', { yPercent: -100, duration: 1, ease: 'expo.inOut' }, '>-0.25')
+      .to('.intro-bg.b', { yPercent: -100, duration: 1, ease: 'expo.inOut' }, '<0.12')
+      .add(function(){ heroIn(); heroIn = function(){}; }, '<0.35');
+    $('.intro-skip').addEventListener('click', function(){ tl.progress(1); });
+  }
+  intro(function(){ heroIn(); heroIn = function(){}; });
+
+
+  /* ---------- scroll: progress, header, clock ---------- */
+  var prog = $('.progress'), hdr = $('.hdr'), lastY = 0;
+  function onScroll(){
+    var y = window.scrollY, m = Math.max(1, d.scrollHeight - innerHeight);
+    prog.style.transform = 'scaleX(' + (y / m) + ')';
+    hdr.classList.toggle('hide', y > lastY && y > 300 && !menu.classList.contains('open'));
+    lastY = y;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var clock = $('.clock b'), t0 = Date.now();
+  setInterval(function(){ var s = Math.floor((Date.now() - t0) / 1000); clock.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }, 1000);
+
+  /* ---------- menu ---------- */
+  var menu = $('#menu'), mBtn = $('.menu-btn');
+  function openMenu(){
+    menu.classList.add('open'); mBtn.setAttribute('aria-expanded', 'true');
+    if (hasG) G.fromTo($$('.menu nav .c'), { yPercent: 110 }, { yPercent: 0, duration: 1, ease: 'expo.out', stagger: 0.012, delay: 0.25 });
+    setTimeout(function(){ var a = $('.menu nav a'); if (a) a.focus(); }, 300);
+  }
+  function closeMenu(){ menu.classList.remove('open'); mBtn.setAttribute('aria-expanded', 'false'); mBtn.focus({ preventScroll: true }); }
+  mBtn.addEventListener('click', openMenu);
+  $('.menu-close').addEventListener('click', closeMenu);
+  $$('.menu a[href^="#"]').forEach(function(a){ a.addEventListener('click', function(){ menu.classList.remove('open'); mBtn.setAttribute('aria-expanded', 'false'); }); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu(); });
+
+  /* ---------- story phone ---------- */
+  $$('[data-story]').forEach(function(ph){
+    var imgs = $$('img', ph), bars = $$('.bars i', ph), k = 0;
+    function show(n){
+      imgs.forEach(function(im, j){ im.classList.toggle('on', j === n); });
+      bars.forEach(function(b, j){ b.className = j < n ? 'done' : ''; });
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ if (bars[n]) bars[n].className = 'go'; }); });
+    }
+    show(0);
+    setInterval(function(){ if (!document.hidden){ k = (k + 1) % imgs.length; show(k); } }, 2600);
+  });
+
+  /* ---------- tabs / before-after / copy ---------- */
+  var tabs = $$('.tab');
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(o){ var on = o === t; o.setAttribute('aria-selected', on); document.getElementById(o.getAttribute('aria-controls')).hidden = !on; });
+      var pan = document.getElementById(t.getAttribute('aria-controls'));
+      if (hasG) G.fromTo($$('.thumb', pan), { y: 40, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'expo.out', stagger: 0.06 });
+      if (hasG) ST.refresh();
+    });
+  });
+  $$('.ba').forEach(function(ba){ var inp = $('input', ba); inp.addEventListener('input', function(){ ba.style.setProperty('--p', inp.value + '%'); }); });
+  $$('button.copy[data-copy]').forEach(function(b){
+    var label = $('span', b);
+    b.addEventListener('click', function(){
+      var txt = b.getAttribute('data-copy');
+      function done(){ label.textContent = 'Copiado'; b.classList.add('ok'); setTimeout(function(){ label.textContent = 'Copiar'; b.classList.remove('ok'); }, 1600); }
+      function fallback(){ var a = b.parentNode.querySelector('a'); var r = document.createRange(); r.selectNodeContents(a); var s = getSelection(); s.removeAllRanges(); s.addRange(r); label.textContent = 'Seleccionado'; setTimeout(function(){ label.textContent = 'Copiar'; }, 1600); }
+      try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (e) { fallback(); }
+    });
+  });
+
+  /* ---------- lightbox ---------- */
+  var lb = $('.lb'), lbImg = $('.lb-stage img'), lbCap = $('.lb .cap'), lbCount = $('.lb .count'), list = [], idx = 0, opener = null;
+  function render(){
+    var b = list[idx], src = $('img', b);
+    lbImg.src = src.getAttribute('src'); lbImg.alt = src.alt;
+    lbImg.style.animation = 'none'; void lbImg.offsetWidth; lbImg.style.animation = '';
+    lbCap.textContent = b.getAttribute('data-label') || '';
+    lbCount.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(list.length).padStart(2, '0');
+  }
+  function step(n){ idx = (idx + n + list.length) % list.length; render(); }
+  $$('[data-lb]').forEach(function(b){
+    b.addEventListener('click', function(){
+      if (b._dragged) return;
+      list = $$('[data-lb="' + b.getAttribute('data-lb') + '"]'); idx = list.indexOf(b); opener = b; render();
+      if (lb.showModal) lb.showModal(); else lb.setAttribute('open', '');
+    });
+  });
+  function closeLb(){ if (lb.close) lb.close(); else lb.removeAttribute('open'); }
+  $('[data-lb-close]').addEventListener('click', closeLb);
+  $('[data-lb-prev]').addEventListener('click', function(){ step(-1); });
+  $('[data-lb-next]').addEventListener('click', function(){ step(1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb || e.target.classList.contains('lb-stage')) closeLb(); });
+  lb.addEventListener('close', function(){ if (opener) opener.focus({ preventScroll: true }); });
+  document.addEventListener('keydown', function(e){ if (!lb.open) return; if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1); });
+  var tx = null;
+  lb.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function(e){ if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1); tx = null; });
+
+  /* ---------- drag to scroll the agency rail (when not pinned) ---------- */
+  var view = $('.ag-view');
+  (function(){
+    var down = false, sx = 0, sl = 0, moved = 0;
+    view.addEventListener('pointerdown', function(e){ if (e.pointerType !== 'mouse' || $('.agency').classList.contains('pinned')) return; down = true; moved = 0; sx = e.clientX; sl = view.scrollLeft; });
+    window.addEventListener('pointermove', function(e){ if (!down) return; moved = Math.abs(e.clientX - sx); view.scrollLeft = sl - (e.clientX - sx); });
+    window.addEventListener('pointerup', function(){ if (!down) return; down = false; $$('.poster', view).forEach(function(p){ p._dragged = moved > 6; setTimeout(function(){ p._dragged = false; }, 50); }); });
+  })();
+
+  /* ---------- custom cursor + magnetic ---------- */
+  if (fine){
+    var cur = $('.cursor'), px = -100, py = -100, cx = -100, cy = -100;
+    document.addEventListener('mousemove', function(e){ px = e.clientX; py = e.clientY; cur.classList.add('on'); });
+    document.addEventListener('mouseleave', function(){ cur.classList.remove('on'); });
+    (function loop(){ cx += (px - cx) * 0.22; cy += (py - cy) * 0.22; cur.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; requestAnimationFrame(loop); })();
+    $$('[data-lb]').forEach(function(el){ el.addEventListener('mouseenter', function(){ cur.classList.add('big'); }); el.addEventListener('mouseleave', function(){ cur.classList.remove('big'); }); });
+    $$('a, button:not([data-lb]), .ba').forEach(function(el){ el.addEventListener('mouseenter', function(){ cur.classList.add('link'); }); el.addEventListener('mouseleave', function(){ cur.classList.remove('link'); }); });
+    $$('.lk, .menu-btn').forEach(function(el){
+      el.addEventListener('mousemove', function(e){ var r = el.getBoundingClientRect(); el.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.12) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.2) + 'px)'; });
+      el.addEventListener('mouseleave', function(){ el.style.transform = ''; });
+    });
+  }
+
+  /* ================= SCROLL ANIMATIONS (GSAP) ================= */
+  if (!hasG) return;
+  var mm = G.matchMedia();
+
+  /* agency horizontal pin (desktop) — created first so later triggers account for its spacing */
+  mm.add('(min-width: 900px)', function(){
+    var sec = $('.agency'), track = $('.ag-track'), bar = $('.ag-bar i');
+    sec.classList.add('pinned');
+    var dist = function(){ return Math.max(0, track.scrollWidth - innerWidth); };
+    var skewTo = G.quickTo($$('.ag-track .poster'), 'skewX', { duration: 0.5, ease: 'power3' });
+    var tw = G.to(track, { x: function(){ return -dist(); }, ease: 'none',
+      scrollTrigger: { trigger: sec, pin: true, start: 'top top', end: function(){ return '+=' + dist(); }, scrub: 0.8, invalidateOnRefresh: true,
+        onUpdate: function(self){ bar.style.transform = 'scaleX(' + self.progress + ')'; if (!reduce) skewTo(G.utils.clamp(-8, 8, self.getVelocity() / -300)); } } });
+    $$('.ag-name h3, .ag-intro .st').forEach(function(h){
+      G.from(h, { x: 40, opacity: 0, ease: 'none', scrollTrigger: { trigger: h, containerAnimation: tw, start: 'left 100%', end: 'left 70%', scrub: true } });
+    });
+    return function(){ sec.classList.remove('pinned'); G.set(track, { x: 0 }); };
+  });
+
+  /* manifesto word fill + pill images */
+  var mp = $('[data-words]');
+  var words = [];
+  (function wrapWords(node){
+    Array.prototype.slice.call(node.childNodes).forEach(function(t){
+      if (t.nodeType === 1 && !t.classList.contains('pill')) { wrapWords(t); return; }
+      if (t.nodeType !== 3) return;
+      var frag = document.createDocumentFragment();
+      t.textContent.split(/(\s+)/).forEach(function(w){
+        if (!w) return;
+        if (/^\s+$/.test(w)) { frag.appendChild(document.createTextNode(w)); return; }
+        var s = document.createElement('span'); s.className = 'wd'; s.textContent = w; frag.appendChild(s); words.push(s);
+      });
+      node.replaceChild(frag, t);
+    });
+  })(mp);
+  G.fromTo(words, { opacity: 0.14 }, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: mp, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+  $$('.pill', mp).forEach(function(p){ G.from(p, { width: 0, marginInline: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: p, start: 'top 75%' } }); });
+
+  /* section titles: chars rise */
+  $$('.st[data-split], .st [data-split]').forEach(function(h){
+    G.from(split(h), { yPercent: 115, duration: 1.1, ease: 'expo.out', stagger: 0.03, scrollTrigger: { trigger: h, start: 'top 88%' } });
+  });
+
+  /* service cards: previous card recedes as the next one stacks on top */
+  var cards = $$('.svc');
+  cards.forEach(function(c, i){
+    var next = cards[i + 1]; if (!next) return;
+    G.fromTo(c, { scale: 1, filter: 'brightness(1)' }, { scale: 0.93, filter: 'brightness(0.6)', ease: 'none', scrollTrigger: { trigger: next, start: 'top 85%', end: 'top 25%', scrub: true } });
+  });
+  cards.forEach(function(c){
+    var vis = $('.svc-vis', c);
+    G.fromTo(vis, { clipPath: 'inset(100% 0% 0% 0%)', y: 60 }, { clipPath: 'inset(0% 0% 0% 0%)', y: 0, duration: 1.2, ease: 'expo.out', clearProps: 'clipPath',
+      scrollTrigger: { trigger: c, start: 'top 75%' } });
+  });
+
+  /* personal columns parallax (desktop) */
+  mm.add('(min-width: 761px) and (prefers-reduced-motion: no-preference)', function(){
+    $$('.col').forEach(function(col){
+      var s = parseFloat(col.getAttribute('data-speed')) || 0;
+      G.fromTo(col, { yPercent: -s / 2 }, { yPercent: s / 2, ease: 'none', scrollTrigger: { trigger: '.cols', start: 'top bottom', end: 'bottom top', scrub: true } });
+    });
+  });
+
+  /* generic reveals */
+  G.set('.rv', { y: 60, opacity: 0 });
+  ST.batch('.rv', { start: 'top 92%', once: true, onEnter: function(els){ G.to(els, { y: 0, opacity: 1, duration: 1.1, ease: 'expo.out', stagger: 0.08, overwrite: true }); } });
+
+  /* CTR counter + scale */
+  var cnt = $('[data-count]');
+  ST.create({ trigger: '.ctr', start: 'top 75%', once: true, onEnter: function(){
+    var o = { v: 0 };
+    G.to(o, { v: 10, duration: 1.8, ease: 'power3.out', onUpdate: function(){ cnt.textContent = (o.v >= 9.95 ? '+' : '') + Math.round(o.v); } });
+    G.from('.scale > div', { scaleX: 0, duration: 1.1, ease: 'expo.out', stagger: 0.15, delay: 0.2 });
+  } });
+
+  /* skill bars */
+  G.from('.sk-bar i', { scaleX: 0, duration: 1.4, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: '.skills', start: 'top 80%' } });
+
+  /* contact marquee reacts to scroll */
+  G.to('.big-wrap', { x: '-12%', ease: 'none', scrollTrigger: { trigger: '.contact', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+  /* footer logo rise */
+  G.from(split($('.foot-logo')), { yPercent: 100, duration: 1.2, ease: 'expo.out', stagger: 0.04, scrollTrigger: { trigger: '.foot', start: 'top 85%' } });
+
+  window.addEventListener('load', function(){ ST.refresh(); });
+})();
+</script>
+</body>
+</html>
